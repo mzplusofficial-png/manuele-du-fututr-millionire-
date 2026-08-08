@@ -1,0 +1,6 @@
+{
+  "name": "Le Manuel du Futur Millionnaire",
+  "description": "Landing page premium, moderne et immersive pour Le Manuel du Futur Millionnaire de Millionaire Zone.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
