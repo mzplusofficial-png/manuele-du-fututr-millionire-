@@ -126,7 +126,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ onSelectChapte
             {/* Chapter Availability Note */}
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-zinc-800/80">
               <p className="text-xs text-zinc-400">
-                Lancement exclusif du manuscrit le <strong className="text-[#d4af37]">Lundi 10 Août à 09h00</strong>.
+                Sortie officielle du manuscrit le <strong className="text-[#d4af37]">Lundi 10 Août à 09h00</strong>.
               </p>
               <div className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#d4af37]/10 text-[#d4af37] border border-[#d4af37]/30 flex items-center gap-2">
                 <Sparkles className="w-3.5 h-3.5" />

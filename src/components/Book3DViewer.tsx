@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Award } from 'lucide-react';
+import { CountdownTimer } from './CountdownTimer';
 
 interface Book3DViewerProps {
   coverImageUrl: string;
@@ -31,7 +32,7 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
         {/* Floating Badges Reacting to Hover */}
         <div className="absolute -top-3 -right-3 z-20 px-3 py-1.5 rounded-full bg-black/90 border border-yellow-500/40 text-yellow-400 text-xs font-bold shadow-xl flex items-center gap-1.5 backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
           <Zap className="w-3.5 h-3.5 text-yellow-400 animate-pulse" />
-          <span>Lancement 10 Août</span>
+          <span>Sortie Officielle 10 Août</span>
         </div>
 
         <div className="absolute -bottom-3 -left-3 z-20 px-3 py-1.5 rounded-full bg-black/90 border border-yellow-500/40 text-gradient-gold text-xs font-bold shadow-xl flex items-center gap-1.5 backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
@@ -63,6 +64,9 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
           </div>
         </div>
       </motion.div>
+
+      {/* Countdown Timer Right Below Image */}
+      <CountdownTimer targetDateStr="2026-08-10T20:00:00+01:00" />
     </div>
   );
 };

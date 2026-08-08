@@ -23,7 +23,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-zinc-900/90 border border-[#d4af37]/40 shadow-xl backdrop-blur-md mb-5">
           <span className="w-2 h-2 rounded-full bg-[#d4af37] animate-ping" />
           <span className="text-[11px] font-semibold tracking-[0.2em] uppercase text-gradient-gold">
-            LANCEMENT OFFICIEL • LUNDI 10 AOÛT
+            SORTIE OFFICIELLE • LUNDI 10 AOÛT
           </span>
         </div>
 
@@ -44,7 +44,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Subtitle / Hook */}
         <p className="text-base sm:text-lg text-zinc-300 font-normal leading-relaxed max-w-2xl mx-auto mb-8">
-          Et si votre chemin vers la liberté financière tenait entre les pages d'un seul livre ? Rendez-vous le <strong className="text-[#d4af37]">Lundi 10 Août</strong> pour le lancement officiel.
+          Et si votre chemin vers la liberté financière tenait entre les pages d'un seul livre ? Rendez-vous le <strong className="text-[#d4af37]">Lundi 10 Août</strong> pour la sortie officielle.
         </p>
 
         {/* Call To Actions */}
@@ -54,7 +54,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             onClick={onScrollToCheckout}
             className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black shadow-xl shadow-[#d4af37]/20 hover:shadow-[#d4af37]/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group"
           >
-            <span>S'inscrire au Lancement (10 Août)</span>
+            <span>S'inscrire à la Sortie Officielle (10 Août)</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -62,7 +62,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Reassurance text */}
         <div className="flex items-center justify-center gap-2 text-xs text-zinc-400 font-medium">
           <ShieldCheck className="w-4 h-4 text-[#d4af37]" />
-          <span>Réservation prioritaire gratuite • Lancement officiel le Lundi 10 Août</span>
+          <span>Réservation prioritaire gratuite • Sortie officielle le Lundi 10 Août</span>
         </div>
 
       </div>
