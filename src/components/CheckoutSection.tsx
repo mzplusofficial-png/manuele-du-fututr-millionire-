@@ -175,10 +175,10 @@ export const CheckoutSection: React.FC = () => {
                   className="w-full py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-xl shadow-[#d4af37]/20 flex items-center justify-center gap-2 transition-all duration-300"
                 >
                   {loading ? (
-                    <span>Confirmation de la réservation en cours...</span>
+                    <span>Traitement de la précommande en cours...</span>
                   ) : (
                     <>
-                      <span>M'inscrire au Lancement du 10 Août</span>
+                      <span>Précommander le Manuscrit (30 Places Seulements)</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}

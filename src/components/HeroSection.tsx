@@ -1,6 +1,8 @@
 import React from 'react';
 import { ArrowRight, BookOpen, ShieldCheck, ChevronDown } from 'lucide-react';
 import { Book3DViewer } from './Book3DViewer';
+import { AuthorStory } from './AuthorStory';
+import { TargetAudience } from './TargetAudience';
 
 interface HeroSectionProps {
   coverImageUrl: string;
@@ -49,12 +51,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
         {/* Call To Actions */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto mb-6">
-          {/* Primary Launch Registration Button */}
+          {/* Primary Preorder Button */}
           <button
             onClick={onScrollToCheckout}
             className="w-full sm:w-auto px-8 py-4 rounded-xl text-sm font-bold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black shadow-xl shadow-[#d4af37]/20 hover:shadow-[#d4af37]/35 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-3 group"
           >
-            <span>S'inscrire à la Sortie Officielle (10 Août)</span>
+            <span>Précommander le Manuscrit (30 Accès Seulements)</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
@@ -62,17 +64,23 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         {/* Reassurance text */}
         <div className="flex items-center justify-center gap-2 text-xs text-zinc-400 font-medium">
           <ShieldCheck className="w-4 h-4 text-[#d4af37]" />
-          <span>Réservation prioritaire gratuite • Sortie officielle le Lundi 10 Août</span>
+          <span>Précommande prioritaire sans engagement • Sortie officielle le Lundi 10 Août</span>
         </div>
+
+        {/* Author Story Section - Placed right after CTA */}
+        <AuthorStory />
+
+        {/* Target Audience / "Est-ce fait pour vous ?" Section */}
+        <TargetAudience />
 
       </div>
 
       {/* Scroll Down Indicator */}
-      <div className="mt-10 flex justify-center">
+      <div className="mt-6 flex justify-center">
         <a
-          href="#manifeste"
+          href="#faq"
           className="p-2 text-zinc-500 hover:text-[#d4af37] transition-colors animate-bounce"
-          aria-label="Découvrir la suite"
+          aria-label="Voir la FAQ et la réservation"
         >
           <ChevronDown className="w-6 h-6" />
         </a>
