@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { MANUSCRIPT_CHAPTERS } from '../data/manuscriptData';
 import { Chapter } from '../types';
-import { BookOpen, Clock, ChevronRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Clock, ChevronRight, CheckCircle2, Sparkles } from 'lucide-react';
 
 interface TableOfContentsProps {
   onSelectChapterToRead: (chapter: Chapter) => void;
@@ -25,7 +25,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ onSelectChapte
             4 Piliers Majeurs. 280 Pages d'Excellence.
           </h2>
           <p className="text-sm sm:text-base text-zinc-400">
-            Cliquez sur un chapitre ci-dessous pour découvrir la structure détaillée et consulter un extrait en direct.
+            Sélectionnez un chapitre ci-dessous pour découvrir son architecture détaillée et les enseignements clés.
           </p>
         </div>
 
@@ -123,18 +123,15 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ onSelectChapte
               </ul>
             </div>
 
-            {/* Read Chapter Excerpt CTA */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
-              <p className="text-xs text-zinc-500">
-                Un extrait réel de ce chapitre est disponible en consultation gratuite.
+            {/* Chapter Availability Note */}
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-zinc-800/80">
+              <p className="text-xs text-zinc-400">
+                Lancement exclusif du manuscrit le <strong className="text-[#d4af37]">Lundi 10 Août à 09h00</strong>.
               </p>
-              <button
-                onClick={() => onSelectChapterToRead(selectedChapter)}
-                className="w-full sm:w-auto px-6 py-3 rounded-xl text-xs font-bold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-lg flex items-center justify-center gap-2 shrink-0"
-              >
-                <BookOpen className="w-4 h-4" />
-                <span>Lire l'extrait de ce chapitre</span>
-              </button>
+              <div className="px-4 py-2 rounded-xl text-xs font-semibold bg-[#d4af37]/10 text-[#d4af37] border border-[#d4af37]/30 flex items-center gap-2">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Accès Prioritaire sur Inscription</span>
+              </div>
             </div>
 
           </div>

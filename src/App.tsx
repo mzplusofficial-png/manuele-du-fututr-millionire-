@@ -17,7 +17,7 @@ import { Chapter } from './types';
 import defaultCoverImg from './assets/images/book_cover_front_1786191813901.jpg';
 
 // User provided book cover image from Google Drive
-const GOOGLE_DRIVE_COVER_URL = 'https://lh3.googleusercontent.com/d/12P0-JeDThFV5KO5jXX_DDoJDmmGkkKKP';
+const GOOGLE_DRIVE_COVER_URL = 'https://lh3.googleusercontent.com/d/1hnLGRJqKgvOQxMNkjoqvlbpkp3X1Vr9P';
 
 export default function App() {
   const [coverImageUrl] = useState<string>(GOOGLE_DRIVE_COVER_URL);
@@ -47,10 +47,6 @@ export default function App() {
       {/* Fixed Luxury Translucent Navbar */}
       <Navbar
         xpPoints={xpPoints}
-        onOpenReader={() => {
-          setSelectedChapter(undefined);
-          setIsReaderModalOpen(true);
-        }}
         onScrollToCheckout={scrollToCheckout}
       />
 
@@ -59,10 +55,6 @@ export default function App() {
         {/* Hero Section with Interactive 3D Book */}
         <HeroSection
           coverImageUrl={coverImageUrl}
-          onOpenReaderModal={() => {
-            setSelectedChapter(undefined);
-            setIsReaderModalOpen(true);
-          }}
           onScrollToCheckout={scrollToCheckout}
         />
 

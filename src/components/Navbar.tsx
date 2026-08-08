@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, BookOpen, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Sparkles, Menu, X, ArrowUpRight } from 'lucide-react';
 
 interface NavbarProps {
-  onOpenReader: () => void;
   onScrollToCheckout: () => void;
   xpPoints?: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
-  onOpenReader,
   onScrollToCheckout,
   xpPoints = 250,
 }) => {
@@ -60,19 +58,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <a href="#sommaire" className="hover:text-[#d4af37] transition-colors duration-200">
               Sommaire
             </a>
+            <a href="#gamification" className="hover:text-[#d4af37] transition-colors duration-200">
+              Diagnostic & XP
+            </a>
             <a href="#ecosysteme" className="hover:text-[#d4af37] transition-colors duration-200">
               Ce qui est inclus
             </a>
             <a href="#avis" className="hover:text-[#d4af37] transition-colors duration-200">
               Avis
             </a>
-            <button
-              onClick={onOpenReader}
-              className="text-zinc-300 hover:text-[#d4af37] flex items-center gap-1.5 transition-colors duration-200"
-            >
-              <BookOpen className="w-4 h-4 text-[#d4af37]" />
-              <span>Extrait Gratuit</span>
-            </button>
           </nav>
 
           {/* Action Buttons */}
@@ -137,17 +131,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </a>
 
           <div className="pt-3 border-t border-zinc-800/80 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenReader();
-              }}
-              className="w-full px-4 py-2.5 rounded-lg text-xs font-medium bg-zinc-900 text-zinc-200 border border-zinc-800 flex items-center justify-center gap-2"
-            >
-              <BookOpen className="w-4 h-4 text-[#d4af37]" />
-              <span>Feuilleter l'extrait gratuit</span>
-            </button>
-
             <button
               onClick={() => {
                 setMobileMenuOpen(false);

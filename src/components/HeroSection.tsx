@@ -4,13 +4,11 @@ import { Book3DViewer } from './Book3DViewer';
 
 interface HeroSectionProps {
   coverImageUrl: string;
-  onOpenReaderModal: () => void;
   onScrollToCheckout: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
   coverImageUrl,
-  onOpenReaderModal,
   onScrollToCheckout,
 }) => {
   return (
@@ -41,7 +39,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <div className="my-8 md:my-10 w-full flex justify-center items-center relative group">
           <Book3DViewer
             coverImageUrl={coverImageUrl}
-            onOpenReaderModal={onOpenReaderModal}
           />
         </div>
 
@@ -59,15 +56,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           >
             <span>S'inscrire au Lancement (10 Août)</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-
-          {/* Secondary Sample Reader Button */}
-          <button
-            onClick={onOpenReaderModal}
-            className="w-full sm:w-auto px-6 py-4 rounded-xl text-sm font-semibold text-zinc-200 hover:text-white bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-800 hover:border-[#d4af37]/40 transition-all flex items-center justify-center gap-2.5 shadow-md"
-          >
-            <BookOpen className="w-4 h-4 text-[#d4af37]" />
-            <span>Feuilleter l'extrait</span>
           </button>
         </div>
 
