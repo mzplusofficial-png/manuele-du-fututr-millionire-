@@ -1,43 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { Timer, Sparkles } from 'lucide-react';
+import { Timer } from 'lucide-react';
+import { FIXED_LAUNCH_TIMESTAMP, getLaunchTimeLeft } from '../constants/launch';
 
 interface CountdownTimerProps {
-  targetDateStr?: string; // ISO date string or default to Monday 10 Aug 2026 20:00 GMT+1
+  targetTimestamp?: number;
 }
 
 export const CountdownTimer: React.FC<CountdownTimerProps> = ({
-  targetDateStr = '2026-08-10T20:00:00+01:00',
+  targetTimestamp = FIXED_LAUNCH_TIMESTAMP,
 }) => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
+  const [timeLeft, setTimeLeft] = useState(() => getLaunchTimeLeft(targetTimestamp));
 
   useEffect(() => {
-    const targetTime = new Date(targetDateStr).getTime();
-
     const calculateTime = () => {
-      const now = new Date().getTime();
-      const difference = targetTime - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((difference / 1000 / 60) % 60);
-        const seconds = Math.floor((difference / 1000) % 60);
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
+      setTimeLeft(getLaunchTimeLeft(targetTimestamp));
     };
 
     calculateTime();
     const interval = setInterval(calculateTime, 1000);
 
     return () => clearInterval(interval);
-  }, [targetDateStr]);
+  }, [targetTimestamp]);
 
   const pad = (num: number) => String(num).padStart(2, '0');
 

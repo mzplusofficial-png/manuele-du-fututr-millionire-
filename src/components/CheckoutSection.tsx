@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Check, ArrowRight, Bell, Calendar, Sparkles, MessageCircle } from 'lucide-react';
 import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
+import { getLaunchTimeLeft } from '../constants/launch';
 
-export const CheckoutSection: React.FC = () => {
-  // Countdown timer to Monday August 10, 2026 09:00:00
-  const [timeLeft, setTimeLeft] = useState({ days: 1, hours: 18, minutes: 36, seconds: 45 });
+interface CheckoutSectionProps {
+  onOpenReservationModal: () => void;
+}
+
+export const CheckoutSection: React.FC<CheckoutSectionProps> = ({
+  onOpenReservationModal,
+}) => {
+  const [timeLeft, setTimeLeft] = useState(() => getLaunchTimeLeft());
 
   useEffect(() => {
-    const targetDate = new Date('2026-08-10T09:00:00').getTime();
-
     const updateTimer = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference > 0) {
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-        setTimeLeft({ days, hours, minutes, seconds });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
+      setTimeLeft(getLaunchTimeLeft());
     };
 
     updateTimer();
@@ -123,18 +116,16 @@ export const CheckoutSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Direct WhatsApp CTA Button */}
+            {/* Direct Reservation CTA Button */}
             <div className="pt-4 border-t border-zinc-800/80">
-              <a
-                href={WHATSAPP_PREORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-4 rounded-xl text-sm font-extrabold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-xl shadow-[#d4af37]/20 flex items-center justify-center gap-2.5 transition-all duration-300 group"
+              <button
+                onClick={onOpenReservationModal}
+                className="w-full py-4 rounded-xl text-sm font-extrabold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-xl shadow-[#d4af37]/20 flex items-center justify-center gap-2.5 transition-all duration-300 group cursor-pointer"
               >
-                <MessageCircle className="w-5 h-5 fill-black" />
-                <span>Je réserve mon accès au manuscrit (sur WhatsApp)</span>
+                <Sparkles className="w-5 h-5 fill-black" />
+                <span>Je réserve mon accès au manuscrit</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
             </div>
 
             {/* Guarantees */}

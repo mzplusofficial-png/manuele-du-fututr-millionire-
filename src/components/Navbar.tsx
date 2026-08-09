@@ -4,11 +4,13 @@ import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
 
 interface NavbarProps {
   onScrollToCheckout: () => void;
+  onOpenReservationModal: () => void;
   xpPoints?: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onScrollToCheckout,
+  onOpenReservationModal,
   xpPoints = 250,
 }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -25,11 +27,9 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       {/* Top Urgency / Scarcity Banner in Vibrant Red */}
-      <a
-        href={WHATSAPP_PREORDER_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="w-full bg-gradient-to-r from-red-950 via-red-900 to-red-950 border-b border-red-500/60 py-2 px-3 sm:px-4 text-center text-xs font-medium text-red-100 flex items-center justify-center gap-2 shadow-lg shadow-red-950/80 backdrop-blur-md relative z-50 hover:brightness-110 transition-all"
+      <button
+        onClick={onOpenReservationModal}
+        className="w-full bg-gradient-to-r from-red-950 via-red-900 to-red-950 border-b border-red-500/60 py-2 px-3 sm:px-4 text-center text-xs font-medium text-red-100 flex items-center justify-center gap-2 shadow-lg shadow-red-950/80 backdrop-blur-md relative z-50 hover:brightness-110 transition-all cursor-pointer"
       >
         <span className="flex h-2.5 w-2.5 relative shrink-0">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-80"></span>
@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </strong>{' '}
           Accès ultra-exclusif réservé aux <strong className="text-yellow-300 underline underline-offset-2 decoration-red-400">30 premiers inscrits</strong> le 10 Août.
         </span>
-      </a>
+      </button>
 
       <div
         className={`w-full transition-all duration-300 ${
@@ -72,14 +72,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a href="#faq" className="hover:text-[#d4af37] transition-colors duration-200">
                 Questions Fréquentes
               </a>
-              <a
-                href={WHATSAPP_PREORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#d4af37] transition-colors duration-200 font-bold text-yellow-400"
+              <button
+                onClick={onOpenReservationModal}
+                className="hover:text-[#d4af37] transition-colors duration-200 font-bold text-yellow-400 cursor-pointer"
               >
-                Précommander
-              </a>
+                Réserver mon accès
+              </button>
             </nav>
 
             {/* Action Buttons */}
@@ -91,15 +89,13 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
 
               {/* Primary Preorder Button */}
-              <a
-                href={WHATSAPP_PREORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-lg shadow-[#d4af37]/20 transition-all duration-300 flex items-center gap-2 group"
+              <button
+                onClick={onOpenReservationModal}
+                className="px-5 py-2.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-lg shadow-[#d4af37]/20 transition-all duration-300 flex items-center gap-2 group cursor-pointer"
               >
                 <span>Je réserve mon accès</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -130,27 +126,27 @@ export const Navbar: React.FC<NavbarProps> = ({
             >
               Questions Fréquentes (FAQ)
             </a>
-            <a
-              href={WHATSAPP_PREORDER_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm font-bold text-yellow-400 hover:text-[#d4af37] py-2"
+            <button
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenReservationModal();
+              }}
+              className="block w-full text-left text-sm font-bold text-yellow-400 hover:text-[#d4af37] py-2 cursor-pointer"
             >
               Réserver mon accès
-            </a>
+            </button>
 
             <div className="pt-3 border-t border-zinc-800/80 flex flex-col gap-2">
-              <a
-                href={WHATSAPP_PREORDER_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full px-4 py-3 rounded-lg text-xs font-bold bg-gradient-to-r from-[#d4af37] to-[#aa7a1e] text-black shadow-lg flex items-center justify-center gap-2"
+              <button
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onOpenReservationModal();
+                }}
+                className="w-full px-4 py-3 rounded-lg text-xs font-bold bg-gradient-to-r from-[#d4af37] to-[#aa7a1e] text-black shadow-lg flex items-center justify-center gap-2 cursor-pointer"
               >
                 <span>Je réserve mon accès</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
+              </button>
             </div>
           </div>
         )}

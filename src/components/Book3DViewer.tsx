@@ -16,20 +16,20 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
   }, [coverImageUrl]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full my-4 sm:my-6 select-none">
+    <div className="relative flex flex-col items-center justify-center w-full my-4 sm:my-8 select-none">
       {/* Soft Ambient Gold Halo directly behind the cover */}
-      <div className="absolute w-72 sm:w-[380px] h-72 sm:h-[380px] bg-[#d4af37]/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
+      <div className="absolute w-72 sm:w-[420px] h-72 sm:h-[420px] bg-[#d4af37]/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
 
-      {/* Floating Space Area - NO BOX OR FRAME - Cover Image */}
-      <div className="relative w-full max-w-[220px] sm:max-w-[270px] md:max-w-[310px] flex items-center justify-center py-2 sm:py-3">
+      {/* Floating Space Area - Cover Image */}
+      <div className="relative w-full max-w-[240px] sm:max-w-[310px] md:max-w-[350px] flex items-center justify-center py-6 sm:py-8">
         
         {/* Floating Badges in Space */}
-        <div className="absolute -top-2 -right-2 sm:-right-6 z-30 px-3 py-1.5 rounded-full bg-black/85 border border-[#d4af37]/50 text-yellow-300 text-[10px] sm:text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center gap-1.5 backdrop-blur-md">
+        <div className="absolute top-1 -right-1 sm:-right-6 z-30 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-black/90 border border-[#d4af37]/50 text-yellow-300 text-[10px] sm:text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center gap-1.5 backdrop-blur-md pointer-events-none">
           <Zap className="w-3.5 h-3.5 text-yellow-400 animate-pulse" />
           <span>Sortie 10 Août</span>
         </div>
 
-        <div className="absolute -bottom-2 -left-2 sm:-left-6 z-30 px-3 py-1.5 rounded-full bg-black/85 border border-[#d4af37]/50 text-gradient-gold text-[10px] sm:text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center gap-1.5 backdrop-blur-md">
+        <div className="absolute bottom-1 -left-1 sm:-left-6 z-30 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full bg-black/90 border border-[#d4af37]/50 text-gradient-gold text-[10px] sm:text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center gap-1.5 backdrop-blur-md pointer-events-none">
           <Award className="w-3.5 h-3.5 text-[#d4af37]" />
           <span>30 Places Only</span>
         </div>
@@ -86,14 +86,14 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
       </div>
 
       {/* Book Title Directly Under Image */}
-      <div className="mt-4 sm:mt-5 text-center">
-        <h2 className="text-sm sm:text-base md:text-lg font-bold font-serif tracking-widest uppercase text-gradient-gold">
+      <div className="mt-5 sm:mt-6 text-center">
+        <h2 className="text-base sm:text-lg md:text-xl font-bold font-serif tracking-widest uppercase text-gradient-gold">
           LE MANUEL DU FUTUR MILLIONNAIRE
         </h2>
       </div>
 
       {/* Countdown Timer */}
-      <CountdownTimer targetDateStr="2026-08-10T20:00:00+01:00" />
+      <CountdownTimer />
     </div>
   );
 };
