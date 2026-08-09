@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Award } from 'lucide-react';
 import { CountdownTimer } from './CountdownTimer';
+import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
 
 interface Book3DViewerProps {
   coverImageUrl: string;
@@ -15,35 +16,43 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
   }, [coverImageUrl]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center w-full my-4">
-      {/* Ambient Gold Glow Behind Image */}
-      <div className="absolute w-80 h-96 rounded-full bg-gradient-to-r from-[#d4af37]/20 via-[#eab308]/15 to-[#3b82f6]/10 blur-3xl pointer-events-none animate-pulse" />
+    <div className="relative flex flex-col items-center justify-center w-full my-4 sm:my-6 select-none">
+      {/* Soft Ambient Gold Halo directly behind the cover */}
+      <div className="absolute w-72 sm:w-[380px] h-72 sm:h-[380px] bg-[#d4af37]/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
 
-      {/* Floating Motion Container - Levitation Continu (Idle) */}
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{
-          duration: 4,
-          ease: 'easeInOut',
-          repeat: Infinity,
-        }}
-        className="relative group cursor-pointer max-w-[300px] sm:max-w-[340px] w-full"
-      >
-        {/* Floating Badges Reacting to Hover */}
-        <div className="absolute -top-3 -right-3 z-20 px-3 py-1.5 rounded-full bg-black/90 border border-yellow-500/40 text-yellow-400 text-xs font-bold shadow-xl flex items-center gap-1.5 backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
+      {/* Floating Space Area - NO BOX OR FRAME - Cover Image */}
+      <div className="relative w-full max-w-[220px] sm:max-w-[270px] md:max-w-[310px] flex items-center justify-center py-2 sm:py-3">
+        
+        {/* Floating Badges in Space */}
+        <div className="absolute -top-2 -right-2 sm:-right-6 z-30 px-3 py-1.5 rounded-full bg-black/85 border border-[#d4af37]/50 text-yellow-300 text-[10px] sm:text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center gap-1.5 backdrop-blur-md">
           <Zap className="w-3.5 h-3.5 text-yellow-400 animate-pulse" />
-          <span>Sortie Officielle 10 Août</span>
+          <span>Sortie 10 Août</span>
         </div>
 
-        <div className="absolute -bottom-3 -left-3 z-20 px-3 py-1.5 rounded-full bg-black/90 border border-yellow-500/40 text-gradient-gold text-xs font-bold shadow-xl flex items-center gap-1.5 backdrop-blur-md transition-transform duration-300 group-hover:scale-110">
+        <div className="absolute -bottom-2 -left-2 sm:-left-6 z-30 px-3 py-1.5 rounded-full bg-black/85 border border-[#d4af37]/50 text-gradient-gold text-[10px] sm:text-xs font-bold shadow-[0_0_15px_rgba(212,175,55,0.4)] flex items-center gap-1.5 backdrop-blur-md">
           <Award className="w-3.5 h-3.5 text-[#d4af37]" />
-          <span>Édition Collector HD</span>
+          <span>30 Places Only</span>
         </div>
 
-        {/* Cadre du conteneur avec Activation de la bordure au survol */}
-        <div className="relative rounded-2xl overflow-hidden bg-[#09090e] border border-white/10 group-hover:border-yellow-500/40 p-2 sm:p-2.5 transition-all duration-300 shadow-2xl">
-          {/* Cover Image Container */}
-          <div className="relative overflow-hidden rounded-xl bg-zinc-950">
+        {/* Pure Cover Image Floating Seamlessly in Space - Opens WhatsApp */}
+        <a href={WHATSAPP_PREORDER_URL} target="_blank" rel="noopener noreferrer" className="z-10 block">
+          <motion.div
+            animate={{
+              y: [0, -10, 0],
+              rotate: [0, -1, 1, 0],
+            }}
+            transition={{
+              duration: 4.5,
+              ease: 'easeInOut',
+              repeat: Infinity,
+            }}
+            whileHover={{
+              scale: 1.05,
+              y: -14,
+              transition: { duration: 0.3 }
+            }}
+            className="relative cursor-pointer"
+          >
             <img
               src={imgSrc}
               onError={() => {
@@ -54,18 +63,36 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
                   }
                 }
               }}
-              alt="Le Manuel du Futur Millionnaire - Couverture"
-              className="w-full h-auto object-cover rounded-xl transform scale-100 group-hover:scale-110 transition-transform duration-500 ease-out drop-shadow-[0_15px_40px_rgba(234,179,8,0.25)] group-hover:drop-shadow-[0_25px_50px_rgba(234,179,8,0.5)] transition-all"
+              alt="Le Manuel du Futur Millionnaire"
+              className="w-full h-auto object-contain rounded-lg drop-shadow-[0_20px_35px_rgba(0,0,0,0.85)] filter hover:drop-shadow-[0_25px_45px_rgba(212,175,55,0.45)] transition-all duration-500"
               referrerPolicy="no-referrer"
             />
+          </motion.div>
+        </a>
 
-            {/* Subtle Glint Overlay on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-yellow-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-          </div>
-        </div>
-      </motion.div>
+        {/* Soft Floor Shadow beneath the cover */}
+        <motion.div
+          animate={{
+            scale: [0.8, 1, 0.8],
+            opacity: [0.25, 0.5, 0.25],
+          }}
+          transition={{
+            duration: 4.5,
+            ease: 'easeInOut',
+            repeat: Infinity,
+          }}
+          className="absolute -bottom-4 w-36 sm:w-44 h-3.5 rounded-[100%] bg-black blur-md pointer-events-none"
+        />
+      </div>
 
-      {/* Countdown Timer Right Below Image */}
+      {/* Book Title Directly Under Image */}
+      <div className="mt-4 sm:mt-5 text-center">
+        <h2 className="text-sm sm:text-base md:text-lg font-bold font-serif tracking-widest uppercase text-gradient-gold">
+          LE MANUEL DU FUTUR MILLIONNAIRE
+        </h2>
+      </div>
+
+      {/* Countdown Timer */}
       <CountdownTimer targetDateStr="2026-08-10T20:00:00+01:00" />
     </div>
   );

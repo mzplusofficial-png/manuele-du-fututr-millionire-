@@ -43,10 +43,10 @@ export const CountdownTimer: React.FC<CountdownTimerProps> = ({
 
   return (
     <div className="mt-5 flex flex-col items-center justify-center space-y-2.5">
-      {/* Label without explicit hour text as requested */}
-      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/90 border border-[#d4af37]/30 text-[11px] font-semibold text-[#d4af37] shadow-lg">
+      {/* Label */}
+      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900/90 border border-[#d4af37]/30 text-xs font-semibold text-[#d4af37] shadow-lg">
         <Timer className="w-3.5 h-3.5 text-[#d4af37] animate-pulse" />
-        <span className="uppercase tracking-wider">COMPTE À REBOURS AVANT LA SORTIE OFFICIELLE</span>
+        <span className="uppercase tracking-wider">COMPTE À REBOURS AVANT LA SORTIE</span>
       </div>
 
       {/* Countdown Grid */}

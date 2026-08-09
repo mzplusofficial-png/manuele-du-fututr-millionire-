@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
+import { TargetAudience } from './components/TargetAudience';
+import { AuthorStory } from './components/AuthorStory';
 import { FAQ } from './components/FAQ';
 import { CheckoutSection } from './components/CheckoutSection';
 import { Footer } from './components/Footer';
@@ -27,11 +29,21 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main>
-        {/* Hero Section with Interactive 3D Book & Author Story */}
+        {/* Above-the-fold Hero Section */}
         <HeroSection
           coverImageUrl={coverImageUrl}
           onScrollToCheckout={scrollToCheckout}
         />
+
+        {/* Target Audience Section - "Est-ce fait pour vous ?" */}
+        <div id="pour-qui" className="scroll-mt-24">
+          <TargetAudience />
+        </div>
+
+        {/* Author Story Section */}
+        <div id="histoire-auteur" className="scroll-mt-24">
+          <AuthorStory />
+        </div>
 
         {/* FAQ Accordion */}
         <FAQ />

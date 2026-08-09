@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Sparkles, Menu, X, ArrowUpRight } from 'lucide-react';
+import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
 
 interface NavbarProps {
   onScrollToCheckout: () => void;
@@ -23,16 +24,24 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-      {/* Top Urgency / Scarcity Banner */}
-      <div className="w-full bg-gradient-to-r from-yellow-600/30 via-yellow-500/20 to-yellow-600/30 border-b border-yellow-500/30 py-1.5 px-3 sm:px-4 text-center text-[10px] sm:text-xs font-medium text-yellow-300 flex items-center justify-center gap-2 backdrop-blur-md">
-        <span className="flex h-2 w-2 relative shrink-0">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+      {/* Top Urgency / Scarcity Banner in Vibrant Red */}
+      <a
+        href={WHATSAPP_PREORDER_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="w-full bg-gradient-to-r from-red-950 via-red-900 to-red-950 border-b border-red-500/60 py-2 px-3 sm:px-4 text-center text-xs font-medium text-red-100 flex items-center justify-center gap-2 shadow-lg shadow-red-950/80 backdrop-blur-md relative z-50 hover:brightness-110 transition-all"
+      >
+        <span className="flex h-2.5 w-2.5 relative shrink-0">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-80"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500 shadow-[0_0_8px_#ef4444]"></span>
         </span>
-        <span className="tracking-wide">
-          <strong className="font-bold text-yellow-400 uppercase">Accès Ultra-Limité :</strong> Seulement <strong className="text-white underline underline-offset-2 decoration-yellow-400">30 personnes</strong> pourront avoir accès au Manuscrit le 10 Août.
+        <span className="tracking-wide text-[11px] sm:text-xs">
+          <strong className="font-extrabold text-white bg-red-600 px-2 py-0.5 rounded text-[10px] sm:text-[11px] uppercase tracking-wider mr-1 shadow">
+            URGENCE : 30 PLACES SEULEMENT
+          </strong>{' '}
+          Accès ultra-exclusif réservé aux <strong className="text-yellow-300 underline underline-offset-2 decoration-red-400">30 premiers inscrits</strong> le 10 Août.
         </span>
-      </div>
+      </a>
 
       <div
         className={`w-full transition-all duration-300 ${
@@ -44,20 +53,13 @@ export const Navbar: React.FC<NavbarProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Brand Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div className="w-9 h-9 rounded-md bg-gradient-to-br from-[#d4af37] via-[#f5d061] to-[#aa7a1e] p-[1px] shadow-lg group-hover:scale-105 transition-transform duration-300">
-                <div className="w-full h-full bg-[#08080a] rounded-[5px] flex items-center justify-center">
-                  <span className="font-serif font-bold text-xs tracking-widest text-gradient-gold">
-                    MZ
-                  </span>
-                </div>
-              </div>
+            <a href="#" className="flex items-center gap-2 group">
               <div className="flex flex-col">
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-white/90">
+                <span className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-white/90 group-hover:text-gradient-gold transition-colors">
                   Millionaire Zone
                 </span>
                 <span className="text-[10px] tracking-wider text-[#d4af37]/80 font-medium">
-                   Édition Officielle
+                  Édition Officielle
                 </span>
               </div>
             </a>
@@ -70,7 +72,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               <a href="#faq" className="hover:text-[#d4af37] transition-colors duration-200">
                 Questions Fréquentes
               </a>
-              <a href="#checkout" className="hover:text-[#d4af37] transition-colors duration-200">
+              <a
+                href={WHATSAPP_PREORDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#d4af37] transition-colors duration-200 font-bold text-yellow-400"
+              >
                 Précommander
               </a>
             </nav>
@@ -84,13 +91,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
 
               {/* Primary Preorder Button */}
-              <button
-                onClick={onScrollToCheckout}
+              <a
+                href={WHATSAPP_PREORDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-5 py-2.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-lg shadow-[#d4af37]/20 transition-all duration-300 flex items-center gap-2 group"
               >
-                <span>Précommander le Manuscrit</span>
+                <span>Je réserve mon accès</span>
                 <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </button>
+              </a>
             </div>
 
             {/* Mobile Menu Button */}
@@ -122,24 +131,26 @@ export const Navbar: React.FC<NavbarProps> = ({
               Questions Fréquentes (FAQ)
             </a>
             <a
-              href="#checkout"
+              href={WHATSAPP_PREORDER_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="block text-sm font-medium text-zinc-200 hover:text-[#d4af37] py-2"
+              className="block text-sm font-bold text-yellow-400 hover:text-[#d4af37] py-2"
             >
-              Précommander (30 Places)
+              Réserver mon accès
             </a>
 
             <div className="pt-3 border-t border-zinc-800/80 flex flex-col gap-2">
-              <button
-                onClick={() => {
-                  setMobileMenuOpen(false);
-                  onScrollToCheckout();
-                }}
+              <a
+                href={WHATSAPP_PREORDER_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
                 className="w-full px-4 py-3 rounded-lg text-xs font-bold bg-gradient-to-r from-[#d4af37] to-[#aa7a1e] text-black shadow-lg flex items-center justify-center gap-2"
               >
-                <span>Précommander le Manuscrit</span>
+                <span>Je réserve mon accès</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
           </div>
         )}
@@ -147,3 +158,4 @@ export const Navbar: React.FC<NavbarProps> = ({
     </header>
   );
 };
+
