@@ -1,12 +1,12 @@
 import React from 'react';
 import { ArrowRight, ShieldCheck, ChevronDown } from 'lucide-react';
 import { Book3DViewer } from './Book3DViewer';
-import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
+import { OFFICIAL_CTA_URL } from '../constants/links';
 
 interface HeroSectionProps {
   coverImageUrl: string;
   onScrollToCheckout: () => void;
-  onOpenReservationModal: () => void;
+  onOpenReservationModal?: () => void;
 }
 
 export const HeroSection: React.FC<HeroSectionProps> = ({
@@ -35,15 +35,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           <Book3DViewer coverImageUrl={coverImageUrl} />
         </div>
 
-        {/* Primary Call To Action - Well-spaced CTA */}
+        {/* Primary Call To Action - Redirects to Official URL */}
         <div className="mt-6 sm:mt-8 flex flex-col items-center justify-center gap-2.5 w-full sm:w-auto">
-          <button
-            onClick={onOpenReservationModal}
+          <a
+            href={OFFICIAL_CTA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-8 py-3.5 sm:py-4 rounded-xl text-sm sm:text-base font-extrabold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black shadow-xl shadow-[#d4af37]/25 hover:shadow-[#d4af37]/40 hover:scale-[1.03] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5 group cursor-pointer"
           >
             <span>Je réserve mon accès au manuscrit (30 Places Seulement)</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </a>
 
           {/* Reassurance text */}
           <div className="flex items-center justify-center gap-1.5 text-xs text-zinc-400 font-medium">

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, Check, ArrowRight, Bell, Calendar, Sparkles, MessageCircle } from 'lucide-react';
-import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
+import { OFFICIAL_CTA_URL } from '../constants/links';
 import { getLaunchTimeLeft } from '../constants/launch';
 
 interface CheckoutSectionProps {
-  onOpenReservationModal: () => void;
+  onOpenReservationModal?: () => void;
 }
 
 export const CheckoutSection: React.FC<CheckoutSectionProps> = ({
@@ -118,14 +118,16 @@ export const CheckoutSection: React.FC<CheckoutSectionProps> = ({
 
             {/* Direct Reservation CTA Button */}
             <div className="pt-4 border-t border-zinc-800/80">
-              <button
-                onClick={onOpenReservationModal}
+              <a
+                href={OFFICIAL_CTA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full py-4 rounded-xl text-sm font-extrabold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-xl shadow-[#d4af37]/20 flex items-center justify-center gap-2.5 transition-all duration-300 group cursor-pointer"
               >
                 <Sparkles className="w-5 h-5 fill-black" />
                 <span>Je réserve mon accès au manuscrit</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </div>
 
             {/* Guarantees */}

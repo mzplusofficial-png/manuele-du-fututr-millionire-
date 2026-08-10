@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ShieldCheck, ArrowRight, CheckCircle2, Clock, MessageCircle, AlertTriangle, User, Phone, Sparkles, ArrowLeft } from 'lucide-react';
 import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
+import { OFFICIAL_CTA_URL } from '../constants/links';
 
 interface ReservationPageProps {
   onBackToHome: () => void;
@@ -113,6 +114,7 @@ export const ReservationPage: React.FC<ReservationPageProps> = ({ onBackToHome }
     setError('');
     setIsSubmitted(true);
     window.scrollTo(0, 0);
+    window.open(OFFICIAL_CTA_URL, '_blank');
   };
 
   return (
@@ -286,20 +288,30 @@ export const ReservationPage: React.FC<ReservationPageProps> = ({ onBackToHome }
                 {/* Bottom Action CTAs */}
                 <div className="pt-4 sm:pt-6 border-t border-zinc-800 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
                   <a
+                    href={OFFICIAL_CTA_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-extrabold bg-gradient-to-r from-[#d4af37] via-[#f5d061] to-[#aa7a1e] text-black hover:brightness-110 shadow-xl flex items-center justify-center gap-2 sm:gap-2.5 transition-all"
+                  >
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 fill-black shrink-0" />
+                    <span>Accéder à la page officielle MyChariow</span>
+                  </a>
+
+                  <a
                     href={WHATSAPP_PREORDER_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl flex items-center justify-center gap-2 sm:gap-2.5 transition-all"
                   >
                     <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 fill-white shrink-0" />
-                    <span>Rejoindre le canal WhatsApp de rappel</span>
+                    <span>Rejoindre le canal WhatsApp</span>
                   </a>
 
                   <button
                     onClick={onBackToHome}
                     className="w-full sm:w-auto px-5 sm:px-6 py-3.5 sm:py-4 rounded-xl text-xs sm:text-sm font-bold bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition-colors cursor-pointer"
                   >
-                    Compris, retourner à l'accueil
+                    Retourner à l'accueil
                   </button>
                 </div>
               </div>

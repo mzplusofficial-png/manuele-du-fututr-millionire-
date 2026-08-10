@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Zap, Award } from 'lucide-react';
 import { CountdownTimer } from './CountdownTimer';
-import { WHATSAPP_PREORDER_URL } from '../constants/whatsapp';
+import { OFFICIAL_CTA_URL } from '../constants/links';
 
 interface Book3DViewerProps {
   coverImageUrl: string;
@@ -34,8 +34,8 @@ export const Book3DViewer: React.FC<Book3DViewerProps> = ({ coverImageUrl }) => 
           <span>30 Places Only</span>
         </div>
 
-        {/* Pure Cover Image Floating Seamlessly in Space - Opens WhatsApp */}
-        <a href={WHATSAPP_PREORDER_URL} target="_blank" rel="noopener noreferrer" className="z-10 block">
+        {/* Pure Cover Image Floating Seamlessly in Space - Redirects to Official Link */}
+        <a href={OFFICIAL_CTA_URL} target="_blank" rel="noopener noreferrer" className="z-10 block">
           <motion.div
             animate={{
               y: [0, -10, 0],
